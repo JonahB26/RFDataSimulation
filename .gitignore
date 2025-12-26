@@ -1,0 +1,77 @@
+
+#Ignore virtual environment
+NN dev/myenv/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+ClinicalData
+# Distribution / packaging
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data files
+CNN dev/Data
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Django stuff:
+*.log
+*.pot
+
+# Sphinx documentation
+docs/_build/ 
+CNN dev/myenv/
+CNN dev/Figures/
+CNN dev/best_model.pth
+CNN dev/It1_Figures/
+CNN dev/Models/
+CNN dev/images.npy
+CNN dev/labels.npy
+CNN dev/images_prePCA.npy
+CNN dev/labels_prePCA.npy
+Data Generation/.gitignore.save
+CNN dev/images_final.npy
+CNN dev/labels_final.npy
+TestFrame1.mat
+TestFrame2.mat
+TestFrames.mat
+
+<<<<<<< HEAD
+Data Generation/Elastosynth_LatestVersion/ElastoSynth_Private
+=======
+Data Generation/Elastosynth_LatestVersion/ElastoSynth_Private/
+>>>>>>> b040b1aa8cc48502cfbc614ab101a43514da7268
