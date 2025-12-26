@@ -1,0 +1,46 @@
+%% GLUE
+function [Axial,Lateral,strainA,strainL] = RunGLUE(L,D,)
+close all
+clear all
+clc
+
+L = 60;     %Length
+D = 50;     %Depth
+i = 1;      %Length
+j = 2;      %Depth
+
+[RF_data_file, RF_data_path] = uigetfile
+
+load(strcat(RF_data_path, RF_data_file))
+
+Im1 = rf1(:,:,i);
+Im2 = rf1(:,:,j);
+endA = size(Im1,2);
+endRF = size(Im1,1);
+startA = 1;
+startRF = 1;
+xRat = L / (endA-1);
+yRat = D / (endRF-1);
+endA = endA - 30;
+endRF = endRF - 80;
+L = endA * xRat;
+D = endRF * yRat;
+dims = {endA,endRF,L,D,xRat,yRat};
+
+% Coefficients for the GLUE algorithm
+IRF1 = -30;  %1  DON't CHANGE % Maximum allowed disparity in axial D
+IRF2 = 0;    %2  DON't CHANGE
+IA1 = -1;    %3  DON't CHANGE % Maximum allowed disparity in lateral D
+IA2 = 1;     %4  DON't CHANGE
+midA = 100;  %5  MAY CHANGE
+alfa = 5;    %6  DON't CHANGE % Axial regularization
+beta = 20;   %7  DON't CHANGE % Lateral regularization
+gamma = 0.05;%8  DON't CHANGE % Lateral regularization
+a_t = 0.63;  %9  DON't CHANGE % Compensate for attenuation
+T = 0.01;    %10 DON't CHANGE % Threshold for IRLS
+fs = 20;     %11 MAY CHANGE   % Ultrasound sampling freq. in MHz 
+f0 = 10;     %12 MAY CHANGE   % Ultrasound center freq. in MHz   
+smth = 5;    %13 DON't CHANGE % Degree of smoothness
+coeffs = {IRF1,IRF2,IA1,IA2,midA,alfa,beta,gamma,a_t,T,fs,f0,smth};
+
+[Axial,Lateral,strainA,strainL] = Def_GLUE(Im1,Im2,coeffs,{0,0});
